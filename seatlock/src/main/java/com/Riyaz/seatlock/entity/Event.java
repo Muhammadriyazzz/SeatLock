@@ -2,8 +2,8 @@ package com.Riyaz.seatlock.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-
 import java.time.LocalDateTime;
+
 @Entity
 @Table(name="Events")
 @Setter
