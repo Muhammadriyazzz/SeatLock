@@ -23,7 +23,7 @@ public class payment {
 
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "booking_id", nullable = false, unique = true)
-    private Booking booking;
+    private Bookings booking;
 
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal amount;

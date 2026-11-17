@@ -7,15 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SeatlockApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SeatlockApplication.class, args);
+		SpringApplication.run(SeatlockApplication.class,args);
 	}
 }
-
-
-
-
-
-
-
-
-

@@ -3,7 +3,6 @@ package com.Riyaz.seatlock.entity;
 import com.Riyaz.seatlock.entity.enums.BookingStatus;
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.CreationTimestamp;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -18,7 +17,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Booking {
+public class Bookings {
 //continue
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

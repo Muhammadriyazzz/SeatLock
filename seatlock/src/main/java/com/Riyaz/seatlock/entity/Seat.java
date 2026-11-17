@@ -37,7 +37,6 @@ public class Seat {
     @Column(nullable= false,precision =10,scale =2)
     private BigDecimal price;
 
-
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
     @Builder.Default
@@ -48,16 +47,14 @@ public class Seat {
     @JoinColumn(name = "locked_by_user_id")
     private User lockedBy;
 
-
     // When the 5-minute lock ends (null when AVAILABLE)
     @Column(name = "lock_expires_at")
     private LocalDateTime lockExpiresAt;
 
-
     // The booking this seat belongs to (null when AVAILABLE)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "booking_id")
-    private Booking booking;
+    private Bookings booking;
 
     // Optimistic locking: Hibernate increases this number on every update
     @Version
