@@ -18,7 +18,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 public class Bookings {
-//continue
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

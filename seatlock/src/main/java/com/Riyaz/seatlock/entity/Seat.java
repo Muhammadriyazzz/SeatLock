@@ -41,7 +41,6 @@ public class Seat {
     @Column(nullable = false, length = 20)
     @Builder.Default
     private Seatstatus status = Seatstatus.AVAILABLE;
-// continue after this
 // Who locked this seat (null when AVAILABLE)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "locked_by_user_id")
