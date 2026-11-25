@@ -1,8 +1,10 @@
-package com.Riyaz.seatlock.service;
+package com.Riyaz.seatlock.security;
 
 
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.JwtException;
+import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
@@ -11,12 +13,11 @@ import javax.crypto.SecretKey;
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
 
-
 @Service
 public class JwtService {
+
     private final SecretKey key;
     private final long expirationMs;
-
 
     public JwtService(@Value("${app.jwt.secret}")String secret ,
                       @Value("${app.jwt.expiration-ms}")long expirationMs){
@@ -28,14 +29,11 @@ public class JwtService {
         Date time=new Date();
         String role=userdetails.getAuthorities().iterator().next().getAuthority();
 
-
-        //continue from this
-
         return Jwts.builder()
-                .subject(userDetails.getUsername())        // the email
+                .subject(userdetails.getUsername())        // the email
                 .claim("role", role)
-                .issuedAt(now)
-                .expiration(new Date(now.getTime() + expirationMs))
+                .issuedAt(time)
+                .expiration(new Date(time.getTime() + expirationMs))
                 .signWith(key)
                 .compact();
     }
@@ -48,12 +46,12 @@ public class JwtService {
         try {
             Claims claims = parseClaims(token);   // also fails if signature is wrong or token expired
             return claims.getSubject().equals(userDetails.getUsername());
-        } catch (JwtException | IllegalArgumentException e) {
+        } catch (JwtException|IllegalArgumentException e) {
             return false;
         }
     }
 
-    public long getExpirationMs() {
+    public long expirarionMs(){
         return expirationMs;
     }
 
